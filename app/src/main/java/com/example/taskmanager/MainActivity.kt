@@ -1,14 +1,20 @@
 package com.example.taskmanager
- 
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.taskmanager.ui.theme.TaskManagerTheme
 
@@ -20,7 +26,11 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    TaskCompleted(
+                        completed = stringResource(id = R.string.task_completed),
+                        gz = stringResource(
+                            id = R.string.task_gz)
+                    )
                 }
             }
         }
@@ -28,14 +38,27 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun TaskCompleted(completed: String, gz: String) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(
+            painter = painterResource(
+                id = R.drawable.ic_task_completed
+            ),
+            contentDescription = "Done mark",
+        )
+        Text(text = completed)
+        Text(text = gz)
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     TaskManagerTheme {
-        Greeting("Android")
+        TaskCompleted(completed = stringResource(id = R.string.task_completed), gz = stringResource(
+            id = R.string.task_gz))
     }
 }
