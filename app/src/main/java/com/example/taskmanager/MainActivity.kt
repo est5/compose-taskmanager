@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -16,6 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.taskmanager.ui.theme.TaskManagerTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,8 +52,16 @@ fun TaskCompleted(completed: String, gz: String) {
             ),
             contentDescription = "Done mark",
         )
-        Text(text = completed)
-        Text(text = gz)
+        Text(
+            text = completed,
+            modifier = Modifier
+                .padding(top = 24.dp, bottom = 8.dp),
+            fontSize = 24.sp
+        )
+        Text(
+            text = gz,
+            fontSize = 16.sp
+        )
     }
 }
 
